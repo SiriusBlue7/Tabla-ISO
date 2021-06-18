@@ -1,0 +1,55 @@
+
+ARP_profe:
+
+	gcc -o arp_client arp_client.c arp.c ipv4.c eth.c -lrawnet; 
+	sudo chown root.root arp_client; 
+	sudo chmod 4755 arp_client;
+
+	./arp_client eth1 192.100.100.102
+
+
+
+ARP_clase:
+
+	rawnetcc /tmp/arp_client arp_client.c eth.c arp.c ipv4.c
+
+	/tmp/arp_client eth1 192.100.100.102
+
+
+
+IPv4_profe:
+
+	gcc -o ipv4_client ipv4_client.c arp.c ipv4.c eth.c ipv4_config.c ipv4_route_table.c -lrawnet; 
+	sudo chown root.root ipv4_client; 
+	sudo chmod 4755 ipv4_client;
+
+	./ipv4_client ipv4_config_client_casa.txt ipv4_route_table_client_casa.txt 192.100.100.102
+
+
+
+	gcc -o ipv4_server ipv4_server.c arp.c ipv4.c eth.c ipv4_config.c ipv4_route_table.c -lrawnet; 
+	sudo chown root.root ipv4_server; 
+	sudo chmod 4755 ipv4_server;
+
+	./ipv4_server ipv4_config_server_casa.txt ipv4_route_table_server_casa.txt 192.100.100.101
+
+IPv4_clase:
+
+
+	rawnetcc /tmp/ipv4_client ipv4_client.c arp.c ipv4.c eth.c ipv4_config.c ipv4_route_table.c
+	/tmp/ipv4_client ipv4_config_client_casa.txt ipv4_route_table_client_casa.txt 192.100.100.102
+
+
+	rawnetcc /tmp/ipv4_server ipv4_server.c arp.c ipv4.c eth.c ipv4_config.c ipv4_route_table.c
+	/tmp/ipv4_server ipv4_config_server_casa.txt ipv4_route_table_server_casa.txt 192.100.100.101
+
+
+
+
+
+	rawnetcc /tmp/ipv4_client ipv4_client.c arp.c ipv4.c eth.c ipv4_config.c ipv4_route_table.c
+	/tmp/ipv4_client ipv4_config_client.txt ipv4_route_table_client.txt 163.117.114.108
+
+
+	rawnetcc /tmp/ipv4_server ipv4_server.c arp.c ipv4.c eth.c ipv4_config.c ipv4_route_table.c
+	/tmp/ipv4_server ipv4_config_server.txt ipv4_route_table_server.txt 163.117.114.107
